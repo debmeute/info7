@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from io import BytesIO
 
-
 DATAB = '../ensembl_hs63_simple.sqlite'
 def get_db():
     db = getattr(g, '_database', None)
@@ -91,7 +90,6 @@ def transcript(id):
         org_parts+=org_part
     return render_template('transcripts.html', info=t_infos, org_part=org_parts)
 
-
 @app.route("/genes/<id>/parts.png")
 def parts_png(id):
     #partie sql query
@@ -123,7 +121,6 @@ def parts_png(id):
     resp = make_response(b.getvalue())
     resp.headers['content-type'] = 'image/png'
     return resp
-
     #fabriquer la reponse
 
 @app.route("/genes/<id>/transcripts.svg")
@@ -152,7 +149,6 @@ def draw_rect(t,s_s,s_e,num):
     taille=(t[2]-t[1])*200/taille_gene
     svg = '<rect x="'+str(x)+'" y="'+str(y)+'" width="'+str(taille)+'" height="0.5" rx="0.05" style="fill:teal"/>'
     return svg
-
 
 @app.route("/api/genes/<id>",methods=['GET','DELETE'])
 def rep_det(id):
