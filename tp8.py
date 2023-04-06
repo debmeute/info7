@@ -16,11 +16,9 @@ if not exists(DB_PATH):
 def get_db():
     return closing(sqlite3.connect("ensembl_hs63_simple.sqlite"))
 
-
 @app.route("/")
 def root():
     return render_template('root.html')
-
 
 @app.route("/domains/")
 def domain_list():
@@ -46,7 +44,6 @@ def domain_view(did):
         return domain_view_json(did)
     else:
         return domain_view_html(did)
-
 
 @app.route("/domains/<did>.html")
 def domain_view_html(did):
@@ -81,9 +78,7 @@ def domain_view_html(did):
             ORDER BY d2.Interpro_Short_Description
         """, [did, did]);
         related = c.fetchall()
-        
         return render_template("domain_view.html", domain=domain, proteins=proteins, related=related)
-
 
 @app.route("/domains/<did>.json")
 def domain_view_json(did):
@@ -100,16 +95,13 @@ def domain_view_json(did):
         if row is None:
             abort(404)
         data = dict(zip(['id', 'short_description', 'description'], row))
-
         c.execute("""
             SELECT Ensembl_Protein_ID
             FROM Proteins2Domains
             WHERE Interpro_ID = ?
         """, [did]);
         data['proteins'] = list(c.fetchall())
-
         return jsonify(data)
-
 
 @app.route("/proteins/")
 def protein_list():
@@ -126,7 +118,6 @@ def protein_list():
             LIMIT ? OFFSET ?
         """, [limit, offset])
         return render_template("protein_list.html", proteins=c.fetchall(), limit=limit, offset=offset)
-
 
 @app.route("/proteins/<pid>")
 def protein_view(pid):
