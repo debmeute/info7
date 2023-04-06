@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskApp</title>
+</head>
+<body>
+    <h1>
+        Liste des gènes id et de leur nom
+    </h1>
+    <ul>
+        {% for l in salut%}
+            <tr>
+                <td>
+                    <li>Gene id :<a href="{{url_for('gene_id',id=l[0])}}">{{l[0]}}</a>, Gene name : {{l[1]}}</li><br>
+                </td>
+            </tr>    
+            {% endfor %}
+    </ul>
+    <div id="footer">
+        &copy; Copyright 2023 by Deborah.
+      </div>
+</body>
+</html>

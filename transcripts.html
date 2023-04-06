@@ -1,0 +1,27 @@
+{% extends "first_page.html" %}
+{% block title %}
+    <h1>
+        Informations sur le transcript {{info[0][0]}} du gène {{info[0][1]}}
+    </h1>
+{% endblock %}
+{% block content %}
+    <ul>
+        <h2>
+            Informations générales
+        </h2>
+        Id du Transcript: {{info[0][0]}}<br>
+        Id du gène associé: {{info[0][1]}}<br>
+        Transcript Start: {{info[0][2]}}<br>
+        Transcirpt End: {{info[0][3]}}<br>
+        Biotype: {{info[0][4]}}<br>
+        <br>
+            <a href="{{url_for('gene_id',id=info[0][1])}}">Gène correspondant à ce transcript</a><br>
+        <br>
+        <h4>
+            Liste des parties reliées
+        </h4>
+        {% for p in org_part%}
+            <li><a href="{{url_for('gene',part=p)}}">{{p}}</a></li><br>
+            {% endfor %}<br>
+    </ul>
+    {% endblock %}
