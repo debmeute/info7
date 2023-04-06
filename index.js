@@ -10,9 +10,7 @@ const my_func = () =>{ /*permet que ça ne soit pas run à chaque fois qu'on cha
                 line[i].style.display='table-row'
             }
         }})
-
 }
-
 
 const highlight = () =>{
     const list_prot = document.querySelectorAll('#proteins tbody tr')
@@ -28,7 +26,6 @@ const highlight = () =>{
             })
         }
     }
-
 
     const leave_prot=()=>{
         for (let i = 0; i <list_prot.length; i++){
@@ -55,7 +52,6 @@ const highlight = () =>{
         }
     }
 
-
     const leave_domain=()=>{
         for (let i = 0; i <list_domain.length; i++){
             list_domain[i].addEventListener('mouseleave',()=>{
@@ -74,8 +70,6 @@ const highlight = () =>{
     enter_domain()
     leave_domain()
 }
-
-
 
 const setToolTips=()=>{
     const line_related=document.querySelectorAll("#related tbody tr")
@@ -152,11 +146,7 @@ target: <main id="content" class="main-content  ">
 ​<get isTrusted()>: function isTrusted()
 ​<prototype>: MouseEventPrototype { initMouseEvent: initMouseEvent(), getModifierState: getModifierState(), initNSMouseEvent: initNSMouseEvent(), … }
 
-
-
 const searchfield = document.querySelectorAll('#domain_filter')[0]
 searchfield.addEventListener('input', (e) => {})
-
-
 
 */
